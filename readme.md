@@ -19,10 +19,6 @@ The frontend of this project is developed using React.js, a Typescript library f
 - Chart: The application includes a chart component built using Nivo, a powerful charting library for React.js.
 - ChartSwitcher Component: A component is added to allow users to switch between line and bar charts.
 
-## Usage
-
-Once the application is running, you can access the frontend at `http://localhost:3000`. Use the ChartSwitcher component to switch between line and bar charts and explore the data.
-
 ## Getting Started
 
 To run the application, follow these steps:
@@ -31,3 +27,7 @@ To run the application, follow these steps:
 2. Build the Docker containers: `docker-compose build`
 3. Run the Docker containers: `docker-compose up -d`
 4. Seed sample data to the database: `docker-compose exec backend npm run seed`
+
+## Usage
+
+Once the application is running, you can access the frontend at `http://localhost:3000`. Use the ChartSwitcher component to switch between line and bar charts and explore the data.
