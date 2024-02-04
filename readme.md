@@ -10,6 +10,27 @@ The backend of this project is developed using Nest.js, a progressive Node.js fr
 
 - Docker: The backend components are containerized using Docker, a containerization platform.
 
+### API Endpoints
+
+1. **GET /statistics/numeric-data**
+
+   - **Description:** This endpoint fetches numeric data from the database based on a specified date filter.
+   - **Method:** `GET`
+   - **Query:**
+     - `dateFrom` (optional): Start date for the data filter.
+     - `dateTo` (optional): End date for the data filter.
+
+2. **GET /statistics/random-data**
+
+   - **Description:** This endpoint generates and returns random numeric data. It's useful for testing or scenarios where real data is not needed.
+   - **Method:** `GET`
+
+3. **POST /statistics**
+
+   - **Description:** This endpoint is used to insert new statistics into the database.
+   - **Method:** `POST`
+   - **Request Body:** Expects data in the format specified by `InsertStatisticsDto`.
+
 ## Frontend
 
 The frontend of this project is developed using React.js, a Typescript library for building user interfaces. Material-UI, a popular UI framework for React.js applications, is used to style the components.
@@ -25,8 +46,8 @@ The frontend of this project is developed using React.js, a Typescript library f
 To run the application, follow these steps:
 
 1. Clone the repository
-2. Build the Docker containers: `docker-compose build`
-3. Run the Docker containers: `docker-compose up -d`
+2. Build the Docker containers from root folder: `docker-compose build`
+3. Run the Docker containers from root folder: `docker-compose up -d`
 4. Seed sample data to the database: `docker-compose exec backend npm run seed`
 
 ## Usage
