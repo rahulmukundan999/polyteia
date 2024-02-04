@@ -2,6 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { StatisticsModel, StatisticsDocument } from './models/statistics.model';
+import * as dayjs from 'dayjs';
 
 @Injectable()
 export class StatisticsService {
@@ -10,8 +11,21 @@ export class StatisticsService {
     private readonly statisticsModel: Model<StatisticsDocument>,
   ) {}
 
-  async getNumericDataFromDatabase(): Promise<StatisticsModel[]> {
-    return this.statisticsModel.find().exec();
+  async getNumericDataFromDatabase(param): Promise<StatisticsModel[]> {
+    try {
+      const dateFrom = dayjs(param.dateFrom).toDate();
+      const dateTo = dayjs(param.dateTo).toDate();
+      return this.statisticsModel
+        .find({
+          timestamp: {
+            $gte: dateFrom,
+            $lte: dateTo,
+          },
+        })
+        .exec();
+    } catch (error) {
+      throw error;
+    }
   }
 
   async getRandomData(): Promise<StatisticsModel[]> {
@@ -49,5 +63,10 @@ export class StatisticsService {
     } catch (error) {
       throw error;
     }
+  }
+
+  async getDataCount(): Promise<number> {
+    const count = await this.statisticsModel.countDocuments();
+    return count;
   }
 }

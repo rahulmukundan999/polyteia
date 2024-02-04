@@ -1,32 +1,17 @@
-// src/components/Chart/LineChart.tsx
 import React, { useEffect, useState } from "react";
 import { ResponsiveLine } from "@nivo/line";
-import { ApiService } from "../../services/ApiService";
+import { ChartData } from "../../types";
 
-const LineChart: React.FC = () => {
-  const [numericData, setNumericData] = useState<any[]>([]);
+interface LineChartProps {
+  data: ChartData[];
+}
+
+const LineChart: React.FC<LineChartProps> = ({ data }) => {
+  const [numericData, setNumericData] = useState<ChartData[]>([]);
 
   useEffect(() => {
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    // Update the graph whenever numericData changes
-    // You can add any additional logic here if needed
-  }, [numericData]);
-
-  const fetchData = async () => {
-    try {
-      const response = await ApiService.getNumericData();
-      const formattedData = response.map((item) => ({
-        day: new Date(item.timestamp).toLocaleDateString(),
-        value: item.value,
-      }));
-      setNumericData(formattedData);
-    } catch (error) {
-      console.error("Error fetching numeric data:", error);
-    }
-  };
+    setNumericData(data);
+  }, [data]);
 
   return (
     <div style={{ height: "70vh" }}>
@@ -36,7 +21,7 @@ const LineChart: React.FC = () => {
             {
               id: "value",
               data: numericData.map((point) => ({
-                x: point.day, // Use 'day' instead of 'timestamp'
+                x: point.timestamp,
                 y: point.value,
               })),
             },
@@ -52,7 +37,6 @@ const LineChart: React.FC = () => {
           }}
           axisBottom={{
             tickRotation: -45,
-            legend: "Timestamp",
             legendOffset: 36,
             legendPosition: "middle",
           }}
