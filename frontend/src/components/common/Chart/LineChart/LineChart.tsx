@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ResponsiveLine } from "@nivo/line";
-import { ChartData } from "../../types";
+import { ChartData } from "../../../../interface/chart";
 
 interface LineChartProps {
   data: ChartData[];

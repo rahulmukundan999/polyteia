@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ResponsiveBar, BarDatum } from "@nivo/bar";
-import { ChartData } from "../../types";
+import { ChartData } from "../../../../interface/chart";
 
 interface BarChartProps {
   data: ChartData[];

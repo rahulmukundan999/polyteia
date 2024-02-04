@@ -1,17 +1,16 @@
-// src/components/Chart/ChartSwitcher.tsx
 import React, { useEffect, useState } from "react";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Box from "@mui/material/Box";
-import BarChart from "./BarChart";
-import LineChart from "./LineChart";
-import DateFilter from "./DateFilter";
-import { ApiService } from "../../services/ApiService";
-import { ChartData } from "../../types";
+import BarChart from "../../common/Chart/BarChart/BarChart";
+import LineChart from "../../common/Chart/LineChart/LineChart";
+import DateFilter from "../../common/DateFilter/DateFilter";
+import { ApiService } from "../../../services/ApiService";
+import { ChartData } from "../../../interface/chart";
 import { DateRange } from "@mui/x-date-pickers-pro";
 import dayjs, { Dayjs } from "dayjs";
 
-const ChartSwitcher: React.FC = () => {
+const Dashboard: React.FC = () => {
   const [chartType, setChartType] = useState<"bar" | "line">("bar");
   const [selectedDate, setSelectedDate] = useState<DateRange<Dayjs>>([
     dayjs(),
@@ -84,4 +83,4 @@ const ChartSwitcher: React.FC = () => {
   );
 };
 
-export default ChartSwitcher;
+export default Dashboard;

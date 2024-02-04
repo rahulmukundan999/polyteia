@@ -1,13 +1,12 @@
 // src/components/App/App.tsx
 import React from "react";
-import ChartSwitcher from "./components/Chart/ChartSwitcher";
 import {
   StyledContainer,
   StyledPaper,
   StyledHeader,
   theme,
 } from "./styles/chart";
-
+import Dashboard from "./components/pages/Dashboard/Dashboard";
 const App: React.FC = () => {
   return (
     <StyledContainer maxWidth="lg" theme={theme}>
@@ -15,7 +14,7 @@ const App: React.FC = () => {
         <StyledHeader variant="h4" theme={theme}>
           React Nivo Chart App
         </StyledHeader>
-        <ChartSwitcher />
+        <Dashboard />
       </StyledPaper>
     </StyledContainer>
   );

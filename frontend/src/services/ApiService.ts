@@ -1,10 +1,10 @@
 // src/services/ApiService.ts
 import axios from "axios";
-import { ChartData } from "../types";
+import { ChartData } from "../interface/chart";
 import { DateRange } from "@mui/x-date-pickers-pro";
 import { Dayjs } from "dayjs";
 
-const BASE_URL = "http://localhost:3001/";
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 const api = axios.create({
   baseURL: BASE_URL,
