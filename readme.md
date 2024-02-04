@@ -16,8 +16,9 @@ The frontend of this project is developed using React.js, a Typescript library f
 
 ### Features
 
-- Chart: The application includes a chart component built using Nivo, a powerful charting library for React.js.
-- ChartSwitcher Component: A component is added to allow users to switch between line and bar charts.
+- **Chart:** The application includes a chart component built using Nivo, a powerful charting library for React.js.
+- **ChartSwitcher Component:** A component is added to allow users to switch between line and bar charts.
+- **Date Filter:** A date filter is integrated into the frontend, enabling users to filter data based on date ranges. This feature enhances the data exploration capabilities by querying the backend database accordingly.
 
 ## Getting Started
 
@@ -30,4 +31,4 @@ To run the application, follow these steps:
 
 ## Usage
 
-Once the application is running, you can access the frontend at `http://localhost:3000`. Use the ChartSwitcher component to switch between line and bar charts and explore the data.
+Once the application is running, you can access the frontend at `http://localhost:3000`. Use the ChartSwitcher component to switch between line and bar charts, and utilize the Date Filter to query the database based on specific date ranges and explore the data effectively.
