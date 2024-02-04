@@ -1,0 +1,29 @@
+# .dockerignore
+
+# Ignore node_modules for both React and Node.js
+
+node_modules
+
+# Ignore build artifacts
+
+build
+dist
+\*.log
+
+# Ignore any local development configuration files
+
+.env
+
+# Ignore Docker-related files
+
+.dockerignore
+Dockerfile
+
+# Ignore version control files
+
+.git
+.gitignore
+
+# Ignore macOS system files
+
+.DS_Store
