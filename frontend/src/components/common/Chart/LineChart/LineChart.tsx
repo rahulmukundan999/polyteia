@@ -1,17 +1,23 @@
+// LineChart.tsx
 import React, { useEffect, useState } from "react";
 import { ResponsiveLine } from "@nivo/line";
 import { ChartData } from "../../../../interface/chart";
 
 interface LineChartProps {
   data: ChartData[];
+  isSmallScreen: boolean;
 }
 
-const LineChart: React.FC<LineChartProps> = ({ data }) => {
+const LineChart: React.FC<LineChartProps> = ({ data, isSmallScreen }) => {
   const [numericData, setNumericData] = useState<ChartData[]>([]);
 
   useEffect(() => {
     setNumericData(data);
   }, [data]);
+
+  const chartMargins = isSmallScreen
+    ? { top: 30, right: 20, bottom: 50, left: 40 }
+    : { top: 50, right: 110, bottom: 70, left: 60 };
 
   return (
     <div style={{ height: "70vh" }}>
@@ -26,7 +32,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
               })),
             },
           ]}
-          margin={{ top: 50, right: 110, bottom: 70, left: 60 }}
+          margin={chartMargins}
           xScale={{ type: "point" }}
           yScale={{
             type: "linear",

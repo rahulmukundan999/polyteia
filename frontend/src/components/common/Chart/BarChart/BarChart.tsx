@@ -1,17 +1,23 @@
+// BarChart.tsx
 import React, { useEffect, useState } from "react";
 import { ResponsiveBar, BarDatum } from "@nivo/bar";
 import { ChartData } from "../../../../interface/chart";
 
 interface BarChartProps {
   data: ChartData[];
+  isSmallScreen: boolean;
 }
 
-const BarChart: React.FC<BarChartProps> = ({ data }) => {
+const BarChart: React.FC<BarChartProps> = ({ data, isSmallScreen }) => {
   const [numericData, setNumericData] = useState<BarDatum[]>([]);
 
   useEffect(() => {
     setNumericData(data as unknown as BarDatum[]);
   }, [data]);
+
+  const chartMargins = isSmallScreen
+    ? { top: 30, right: 20, bottom: 50, left: 40 }
+    : { top: 50, right: 130, bottom: 70, left: 60 };
 
   return (
     <div style={{ height: "70vh" }}>
@@ -20,7 +26,7 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
           data={numericData}
           keys={["value"]}
           indexBy="timestamp"
-          margin={{ top: 50, right: 130, bottom: 70, left: 60 }}
+          margin={chartMargins}
           padding={0.4}
           valueScale={{ type: "linear" }}
           colors="#3182CE"
@@ -39,7 +45,7 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
           axisBottom={{
             tickSize: 5,
             tickPadding: 5,
-            tickRotation: -45, // Rotate x-axis labels by -45 degrees
+            tickRotation: -45,
             legendPosition: "middle",
             legendOffset: 36,
           }}
